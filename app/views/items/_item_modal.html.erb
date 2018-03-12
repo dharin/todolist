@@ -1,0 +1,27 @@
+<!-- Item Model -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#new_item')[0].reset();"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Item</h4>
+      </div>
+      <%= form_for Item.new, url: user_list_items_path(user_id: params[:user_id],list_id: list.id), remote: true do |form| %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= form.hidden_field :list_id, value: list.id %>
+            <%= form.hidden_field :state, value: 0 %>
+            <%= form.label :title, class: 'control-label' %><br>
+            <%= form.text_field :title, class: 'border-radius-8 form-control' %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="form-group">
+            <button type="button" class="btn btn-default" id="close_item" data-dismiss="modal" onclick="$('#new_item')[0].reset();">Close</button>
+            <%= form.submit class: 'btn btn-primary save_item' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

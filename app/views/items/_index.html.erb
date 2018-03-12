@@ -1,0 +1,39 @@
+<div class='col-md-12'>
+  <h4><%= list.name %> - <%= list.description %></h4>
+</div>
+<hr>
+<div class='row clearfix'>
+  <div class="col-md-8">
+    <h4>Items</h4>
+  </div>
+  <div class="col-md-4 text-right">
+    <button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#myModal2">
+      Add items
+    </button>
+  </div>
+</div>
+<div class='col-md-12 clearfix'>
+  <div class="panel-group">
+    <div class="panel panel-default pending_item <%= undone_items.count <= 0 ? 'hide' : ''  %>">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          Items
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse in">
+        <%= render 'items/items', list: list, items: undone_items, class_name: 'undone_items' %>
+      </div>
+    </div>
+  </div>
+    <div class="panel panel-default complete_item <%= done_items.count <= 0 ? 'hide' : ''  %>">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          Completed Items
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <%= render 'items/items', items: done_items, class_name: 'done_items'  %>
+      </div>
+    </div>
+</div>
+<%= render 'items/item_modal', list: list %>

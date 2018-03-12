@@ -1,0 +1,1 @@
+<%= link_to "#{list.name} <span class='pull-right badge badge-notify list_badge_#{list.id}'> #{list.items.done_items.count} / #{list.items.count}</span>".html_safe, user_list_path(list.user_id, list.id), class: "list-group-item list-#{list.id} #{set_active ? 'active' : ''}", remote: true %>

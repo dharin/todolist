@@ -1,0 +1,17 @@
+<div class="panel-body">
+  <table class="table <%= class_name %>">
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if items.present? %>
+        <% items.each do |item| %>
+          <%= render 'items/item', item: item %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

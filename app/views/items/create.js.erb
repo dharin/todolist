@@ -1,0 +1,6 @@
+$('.no_undone_items').addClass('hide');
+$('.undone_items').append("<%= j(render 'items/item', item: @item) %>");
+$('#new_item')[0].reset();
+$('#myModal2').modal('hide');
+done_to_undone();
+$('.list_badge_<%= @item.list_id %>').html("<%= @item.list.items.done_items.count %> / <%= @item.list.items.count %>");

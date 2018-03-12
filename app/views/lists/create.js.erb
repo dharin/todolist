@@ -1,0 +1,13 @@
+if ($('.list-group-item').length > 0) {
+    $('.list-group-item').each(function () {
+        $(this).removeClass('active');
+    })
+    $('.lists').append("<%= j(render 'lists/list', list: @list, set_active: true) %>");
+} else {
+    $('.lists').empty().append("<%= j(render 'lists/list', list: @list, set_active: true) %>");
+}
+$('#new_list')[0].reset();
+$('#myModal').modal('hide');
+$('#list_description').empty().append(`<%= j(render 'items/index', list: @list,
+		done_items: @done_items, undone_items: @undone_items) %>`);
+done_to_undone();

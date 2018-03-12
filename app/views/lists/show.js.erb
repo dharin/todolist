@@ -1,0 +1,6 @@
+$('#list_description').empty().append("<%= j(render 'items/index', list: @list, done_items: @done_items, undone_items: @undone_items) %>");
+$('.list-group-item').each(function () {
+    $(this).removeClass('active');
+});
+$('.list-<%= @list.id %>').addClass('active');
+done_to_undone();

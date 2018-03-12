@@ -1,0 +1,5 @@
+<tr class='<%= item.state ? "done_items_#{item.id} done_single_item" : "undone_items_#{item.id} undone_single_item" %>'>
+  <td>
+    <%= check_box_tag 'item_state', {}, false, class: 'done_data', data: { :'user-id' => item.list.user_id, :'list-id' => item.list_id, :'item-id' => item.id } %>
+  <td><%= item.title %></td>
+</tr>

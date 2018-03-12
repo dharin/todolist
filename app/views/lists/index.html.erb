@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="margin-top-0">Lists</h3>
+      </div>
+      <div class="col-md-6 text-right">
+        <button type="button" class="btn btn-primary btn-mg" data-toggle="modal" data-target="#myModal">
+          Add List
+        </button>
+      </div>
+    </div>
+    <div class="list-group lists">
+      <% if @lists.length == 1 %>
+        <h3>No List Available.</h3>
+      <% else %>
+        <% @lists.each_with_index do |list, index| %>
+          <% unless list.new_record? %>
+            <%= render 'list', list: list, set_active: (index == 0) ? true : false %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>    
+  </div>
+
+  <div class="col-md-8" >
+    <div id="list_description" class='col-md-8 clearfix'>
+      <% unless @lists.length == 1 %>
+        <%= render 'items/index', list: @lists.first, done_items: @done_items, undone_items: @undone_items %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render 'list_modal' %>

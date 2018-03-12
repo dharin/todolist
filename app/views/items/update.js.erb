@@ -1,0 +1,17 @@
+<% if @item.state %>
+    $('.complete_item').removeClass('hide');
+    $('.done_items').append("<%= j(render 'items/item', item: @item) %>");
+    $('.undone_items_<%= @item.id %>').remove();
+    if ($('.undone_single_item').length == 0) {
+        $('.pending_item').addClass('hide');
+    }
+<% else %>
+    $('.pending_item').removeClass('hide');
+    $('.undone_items').append("<%= j(render 'items/item', item: @item) %>");
+    $('.done_items_<%= @item.id %>').remove();
+    if ($('.done_single_item').length == 0) {
+        $('.complete_item').addClass('hide');
+    }
+<% end %>
+done_to_undone();
+$('.list_badge_<%= @item.list_id %>').html("<%= @item.list.items.done_items.count %> / <%= @item.list.items.count %>");
